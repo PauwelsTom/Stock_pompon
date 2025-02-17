@@ -45,7 +45,7 @@ export class ZoneTexte extends Component {
                     className="ZoneText"
                 />
                 <div className="BoutonCopier" onClick={this.copyToClipboard}>
-                    <img src="https://cdn-icons-png.flaticon.com/512/6611/6611457.png" width="100%"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/6611/6611457.png" alt="jsp" width="100%"/>
                 </div>
             </div>
         );

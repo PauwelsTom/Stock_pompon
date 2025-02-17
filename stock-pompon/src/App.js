@@ -60,7 +60,7 @@ export default class App extends Component {
         <h1>Stocks Pompon</h1>
 
         <div className='ResetButton' onClick={this.resetValues}>
-          <img src="corbeille.png"  className='CorbeilleImage'/>
+          <img src="corbeille.png" alt="Corbeille" className='CorbeilleImage'/>
         </div>
 
         {Object.keys(parfums)
