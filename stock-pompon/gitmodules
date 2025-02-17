@@ -1,3 +1,3 @@
-[submodule "calculatrice-papa"]
-	path = calculatrice-papa
-	url = https://gitlab.com/tomlarigole/calculatrice-pompon
+[submodule "stock-pompon"]
+	path = stock-pompon
+	url = https://github.com/PauwelsTom/Stock_pompon
