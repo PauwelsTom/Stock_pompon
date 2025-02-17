@@ -1,0 +1,3 @@
+[submodule "calculatrice-papa"]
+	path = calculatrice-papa
+	url = https://gitlab.com/tomlarigole/calculatrice-pompon
