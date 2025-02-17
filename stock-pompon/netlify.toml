@@ -1,8 +1,0 @@
-[build]
-  base = "stock-pompon"
-  command = "npm run build"
-  publish = "stock-pompon/build"
-
-[context.production.environment]
-  NODE_VERSION = "14"
-  NPM_VERSION = "6"
