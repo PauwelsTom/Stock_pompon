@@ -1,0 +1,24 @@
+.ZoneTexteDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100vw;
+    height: 20vh;
+
+    margin-top: 3vh;
+}
+
+.ZoneText {
+    width: 70vw;
+    height: 15vh;
+}
+
+.BoutonCopier{
+    height: 15vw;
+    width: 15vw;
+}
+
+.BoutonCopier:hover {
+    cursor: pointer;
+}
