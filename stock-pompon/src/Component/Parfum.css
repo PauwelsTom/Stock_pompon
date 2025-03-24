@@ -10,7 +10,7 @@
     background-color: var(--fond-normal);
 
     border: 5px solid var(--bord-normal);
-    border-radius: 5vh;
+    border-radius: 5.5vh;
 
     margin-top: 1vh;
 
@@ -37,7 +37,7 @@
     padding-bottom: 1.5vh;
 
     border: 4px solid var(--bord-normal);
-    border-radius: 4vh;
+    border-radius: 5vh;
 
     margin-left: 1vw;
     margin-right: 1vw;
@@ -84,6 +84,18 @@
     border: 5px solid var(--bord-special-moins);
 }
 
+/* Disabled */
+
+.BoutonPlusMoinsDisabled {
+    background-color: var(--fond-special-disabled);
+    color: var(--bord-special-disabled);
+    border: 4px solid var(--bord-special-disabled);
+}
+
+.ParfumDivDisabled {
+    background-color: var(--fond-special-disabled);
+    border: 5px solid var(--bord-special-disabled);
+}
 
 
 .ParfumTextDiv {

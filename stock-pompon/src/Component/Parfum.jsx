@@ -8,14 +8,14 @@ export class Parfum extends Component {
     constructor(props) {
         super();
         this.state = {
-            disabled: false,
+            disabled: parfums[props.parfum] === 0,
         }
         this.parfum = props.parfum;
     }
 
     getClassName = (type) => {
         if (this.state.disabled) {
-            return type + " Disabled"
+            return type + " " + type + "Disabled";
         }
         if (this.props.modeEdit) {
             if (parfums[this.parfum] === parfumsInit[this.parfum]) {
@@ -33,6 +33,11 @@ export class Parfum extends Component {
     get_value = () => {
         if (this.props.modeEdit) {
             const text = parfums[this.props.parfum] + "/" + parfumsInit[this.props.parfum];
+            if (parfums[this.props.parfum] === 0 && !this.state.disabled) {
+                this.setState({ disabled: true });
+            } else if (parfums[this.props.parfum] > 0 && this.state.disabled) {
+                this.setState({ disabled: false });
+            }
             return text;
         } else {
             return this.props.parfumValue[this.props.parfum];
@@ -41,8 +46,14 @@ export class Parfum extends Component {
     
 
     handleClick = (add) => {
-        this.props.changeParfum(this.props.parfum, add);
-        this.forceUpdate();
+        if (this.state.disabled) {
+            if (this.props.modeEdit && add) {
+                this.props.changeParfum(this.props.parfum, add);
+            }
+        } else {
+            this.props.changeParfum(this.props.parfum, add);
+            this.forceUpdate();
+        }
     }
 
     render() {

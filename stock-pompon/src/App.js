@@ -2,7 +2,7 @@ import "./couleurs.css"
 import './App.css';
 import { Component } from 'react';
 import { Parfum } from './Component/Parfum';
-import { iconeEngrenage, parfums } from './data';
+import { iconeEchange, iconeEngrenage, parfums } from './data';
 import { ZoneTexte } from './Component/ZoneTexte';
 
 export default class App extends Component {
@@ -12,6 +12,7 @@ export default class App extends Component {
     this.state = {
       values: {},
       modeEdit: false,
+      tri: true,
     }
     
     this.addValue = this.addValue.bind(this);
@@ -87,6 +88,18 @@ export default class App extends Component {
     this.setState({ modeEdit: !this.state.modeEdit });
   }
 
+  get_parfums = () => {
+    if (this.state.tri) {
+      return Object.keys(parfums).sort((a, b) => a.localeCompare(b));
+    } else {
+      return Object.keys(parfums);
+    }
+  }
+
+  changeOrdre = () => {
+    this.setState({ tri: !this.state.tri });
+  }
+
   render() {
     return (
       <div className="App">
@@ -100,11 +113,13 @@ export default class App extends Component {
           <div className='ResetButton' onClick={this.resetValues}>
             <img src="corbeille.png" alt="Corbeille" className='CorbeilleImage'/>
           </div>
+
+          <div className='OrdreBouton' onClick={this.changeOrdre}>
+            <img src={iconeEchange} alt="Ordre" className='OrdreImage'/>
+          </div>
         </div>
 
-        {Object.keys(parfums)
-        .sort((a, b) => a.localeCompare(b))
-        .map((parf) => (
+        {this.get_parfums().map((parf) => (
           <Parfum key={parf} parfum={parf} parfumValue={this.state.values} changeParfum={this.addValue} modeEdit={this.state.modeEdit}/>
         ))}
 

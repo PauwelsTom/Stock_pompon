@@ -19,7 +19,7 @@ export const parfumsInit = {
     "Coup de Coeur": 4,
 };
 
-if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getItem("parfums"))).length !== parfumsInit.length) {
+if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getItem("parfums"))).length !== Object.keys(parfumsInit).length) {
     localStorage.setItem("parfums", JSON.stringify(parfumsInit));
 }
 
@@ -28,3 +28,4 @@ export const parfums = JSON.parse(localStorage.getItem("parfums"));
 export const totalStock = 96;
 
 export const iconeEngrenage = "https://cdn-icons-png.flaticon.com/512/595/595125.png"
+export const iconeEchange = "https://cdn-icons-png.flaticon.com/512/3580/3580097.png";

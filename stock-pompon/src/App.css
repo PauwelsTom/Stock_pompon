@@ -12,8 +12,8 @@
   height: 10vh;
   width: 10vh;
 
-  border: 1px solid black;
-  border-radius: 1.5vh;
+  border: 5px solid var(--reset-button-bord);
+  border-radius: 6vh;
 
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre */
 }
@@ -24,8 +24,20 @@
   height: 10vh;
   width: 10vh;
 
-  border: 1px solid black;
-  border-radius: 1.5vh;
+  border: 5px solid var(--change-mode-bord);
+  border-radius: 6vh;
+
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre */
+}
+
+.OrdreBouton {
+  background-color: var(--ordre-button);
+
+  height: 10vh;
+  width: 10vh;
+
+  border: 5px solid var(--ordre-button-bord);
+  border-radius: 6vh;
 
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre */
 }
@@ -35,9 +47,21 @@
   justify-content: center;
   align-items: center;
 
-  height: 90%;
+  height: 80%;
+  margin-left: 15%;
+  margin-top: 10%;
+}
+
+.OrdreImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 80%;
   margin-left: 10%;
-  margin-top: 5%;
+  margin-top: 10%;
+
+  transform: rotate(90deg) scaleY(-1);
 }
 
 .BoutonsHaut {
@@ -48,6 +72,6 @@
 }
 
 .ChangeModeImage {
-  margin-top: 8%;
-  width: 90%;
+  margin-top: 10%;
+  width: 80%;
 }

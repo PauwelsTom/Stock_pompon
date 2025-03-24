@@ -2,9 +2,13 @@
 
 /* Définition des variables CSS pour les couleurs de l'application */
 :root {
-    --gris: rgb(159, 159, 159);
+    --gris-clair: rgb(164, 164, 164);
+    --gris: rgb(133, 133, 133);
+    --gris-fonce: rgb(100, 100, 100);
 
     --rouge: red; 
+    --rouge-fonce: #5e150b;
+
     --orange-clair: #f4a261;
     --orange: #e76f51;
 
@@ -16,6 +20,8 @@
 
     --vert-clair: #C8D6A2;
     --vert: #8FB43A;
+    --vert2: #7AA95C;
+    --vert-fonce: #5D7052;
 
 
     --fond-normal: var(--bleu-clair);
@@ -30,9 +36,17 @@
     --fond-special-moins: var(--bleu-clair);
     --bord-special-moins: var(--bleu);
 
+    --fond-special-disabled: var(--gris-clair);
+    --bord-special-disabled: var(--gris);
+
     --reset-button: var(--rouge);
+    --reset-button-bord: var(--rouge-fonce);
+    
     --change-mode: var(--gris);
+    --change-mode-bord: var(--gris-fonce);
+    
 
-
+    --ordre-button: var(--vert2);
+    --ordre-button-bord: var(--vert-fonce);
 
 }
