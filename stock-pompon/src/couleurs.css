@@ -1,0 +1,38 @@
+/* couleurs.css */
+
+/* Définition des variables CSS pour les couleurs de l'application */
+:root {
+    --gris: rgb(159, 159, 159);
+
+    --rouge: red; 
+    --orange-clair: #f4a261;
+    --orange: #e76f51;
+
+    --bleu-clair: #c1e2eb;
+    --bleu: #4A919E;
+
+    --rose-clair: #ebd7d6;
+    --rose: #FE94B4;
+
+    --vert-clair: #C8D6A2;
+    --vert: #8FB43A;
+
+
+    --fond-normal: var(--bleu-clair);
+    --bord-normal: var(--bleu);
+
+    --fond-special: var(--vert-clair);
+    --bord-special: var(--vert);
+
+    --fond-special-plus: var(--rose-clair);
+    --bord-special-plus: var(--rose);
+
+    --fond-special-moins: var(--bleu-clair);
+    --bord-special-moins: var(--bleu);
+
+    --reset-button: var(--rouge);
+    --change-mode: var(--gris);
+
+
+
+}

@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import "./couleurs.css"
 import './App.css';
+import { Component } from 'react';
 import { Parfum } from './Component/Parfum';
-import { parfums } from './data';
+import { iconeEngrenage, parfums } from './data';
 import { ZoneTexte } from './Component/ZoneTexte';
 
 export default class App extends Component {
@@ -10,6 +11,7 @@ export default class App extends Component {
     super();
     this.state = {
       values: {},
+      modeEdit: false,
     }
     
     this.addValue = this.addValue.bind(this);
@@ -28,21 +30,43 @@ export default class App extends Component {
     }
   }
 
-  addValue(parfum, add) {
-    const tempValues = this.state.values;
-    if (add) {
-      tempValues[parfum] += 1;
-      if (tempValues[parfum] > parfums[parfum]) {
-        tempValues[parfum] = parfums[parfum];
+  get_title = () => {
+    if (this.state.modeEdit) {
+      let total = 0;
+      for (const parf of Object.keys(parfums)) {
+        total += parfums[parf];
       }
+      return "Stock total: " + total + " bacs";
     } else {
-      tempValues[parfum] -= 1;
-      if (tempValues[parfum] < 0) {
-        tempValues[parfum] = 0;
-      }
+      return "Stocks Pompon";
     }
-    this.setState({ values: tempValues });
-    localStorage.setItem('parfumValues', JSON.stringify(tempValues));
+  }
+
+  addValue(parfum, add) {
+    if (this.state.modeEdit) {
+      parfums[parfum] += (add ? 1 : -1);
+      if (parfums[parfum] < 0) {
+        parfums[parfum] = 0;
+      }
+      localStorage.setItem("parfums", JSON.stringify(parfums));
+      this.forceUpdate();
+    } else {
+      const tempValues = this.state.values;
+      if (add) {
+        tempValues[parfum] += 1;
+        // DEPRECATED: Limite haute du stock
+        // if (tempValues[parfum] > parfums[parfum]) {
+        //   tempValues[parfum] = parfums[parfum];
+        // }
+      } else {
+        tempValues[parfum] -= 1;
+        if (tempValues[parfum] < 0) {
+          tempValues[parfum] = 0;
+        }
+      }
+      this.setState({ values: tempValues });
+      localStorage.setItem('parfumValues', JSON.stringify(tempValues));
+    }
   }
 
   resetValues = () => {
@@ -54,19 +78,29 @@ export default class App extends Component {
     localStorage.setItem('parfumValues', JSON.stringify(values));
   }
 
+  changeMode = () => {
+    this.setState({ modeEdit: !this.state.modeEdit });
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>Stocks Pompon</h1>
+        <h1>{this.get_title()}</h1>
+        <div className="BoutonsHaut">
 
-        <div className='ResetButton' onClick={this.resetValues}>
-          <img src="corbeille.png" alt="Corbeille" className='CorbeilleImage'/>
+          <div className="ChangeMode" onClick={this.changeMode}>
+            <img src={iconeEngrenage} alt="ChangeMode" className='ChangeModeImage'/>
+          </div>
+
+          <div className='ResetButton' onClick={this.resetValues}>
+            <img src="corbeille.png" alt="Corbeille" className='CorbeilleImage'/>
+          </div>
         </div>
 
         {Object.keys(parfums)
         .sort((a, b) => a.localeCompare(b))
         .map((parf) => (
-          <Parfum key={parf} parfum={parf} parfumValue={this.state.values} changeParfum={this.addValue}/>
+          <Parfum key={parf} parfum={parf} parfumValue={this.state.values} changeParfum={this.addValue} modeEdit={this.state.modeEdit}/>
         ))}
 
         <ZoneTexte values={this.state.values}/>

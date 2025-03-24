@@ -7,10 +7,10 @@
     width: 95vw;
     height: 10vh;
 
-    background-color: orange;
+    background-color: var(--fond-normal);
 
-    border: 1px solid black;
-    border-radius: 1.5vh;
+    border: 5px solid var(--bord-normal);
+    border-radius: 5vh;
 
     margin-top: 1vh;
 
@@ -25,21 +25,66 @@
     justify-content: center;
     text-align: center;
 
-    font-size: 6vh;
+    font-size: 8vh;
 
-    background-color: red;
+    /* background-color: var(--ligne-normal); */
+    background-color: var(--fond-normal);
+    color: var(--bord-normal);
 
-    height: 9vh;
-    width: 9vh;
+    height: 6.5vh;
+    width: 8vh;
 
-    border: 1px solid black;
-    border-radius: 1.5vh;
+    padding-bottom: 1.5vh;
+
+    border: 4px solid var(--bord-normal);
+    border-radius: 4vh;
 
     margin-left: 1vw;
     margin-right: 1vw;
 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre */
 }
+
+/* EGAL */
+
+.BoutonPlusMoinsModeSpecialEgal {
+    background-color: var(--fond-special);
+    color: var(--bord-special);
+    border: 4px solid var(--bord-special);
+}
+
+.ParfumDivModeSpecialEgal {
+    background-color: var(--fond-special);
+    border: 5px solid var(--bord-special);
+}
+
+/* SUPERIEUR */
+
+.BoutonPlusMoinsModeSpecialPlus {
+    background-color: var(--fond-special-plus);
+    color: var(--bord-special-plus);
+    border: 4px solid var(--bord-special-plus);
+}
+
+.ParfumDivModeSpecialPlus {
+    background-color: var(--fond-special-plus);
+    border: 5px solid var(--bord-special-plus);
+}
+
+/* INFERIEUR */
+
+.BoutonPlusMoinsModeSpecialMoins {
+    background-color: var(--fond-special-moins);
+    color: var(--bord-special-moins);
+    border: 4px solid var(--bord-special-moins);
+}
+
+.ParfumDivModeSpecialMoins {
+    background-color: var(--fond-special-moins);
+    border: 5px solid var(--bord-special-moins);
+}
+
+
 
 .ParfumTextDiv {
     display: flex;
