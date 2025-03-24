@@ -19,7 +19,7 @@ export const parfumsInit = {
     "Coup de Coeur": 4,
 };
 
-if (!localStorage.getItem("parfums")) {
+if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getItem("parfums"))).length !== parfumsInit.length) {
     localStorage.setItem("parfums", JSON.stringify(parfumsInit));
 }
 
