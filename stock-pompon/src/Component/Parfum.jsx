@@ -18,7 +18,7 @@ export class Parfum extends Component {
             return type + " Disabled"
         }
         if (this.props.modeEdit) {
-            if (parfums[this.parfum] == parfumsInit[this.parfum]) {
+            if (parfums[this.parfum] === parfumsInit[this.parfum]) {
                 return type + " " + type + "ModeSpecialEgal";
             } else if (parfums[this.parfum] >= parfumsInit[this.parfum]) {
                 return type + " " + type + "ModeSpecialPlus";

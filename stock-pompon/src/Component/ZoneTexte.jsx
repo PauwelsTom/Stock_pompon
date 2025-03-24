@@ -28,7 +28,7 @@ export class ZoneTexte extends Component {
         for (const parf of Object.keys(values).sort((a, b) => a.localeCompare(b))) {
             const val = parfums[parf] - values[parf];
 
-            if (parf == 'undefined' || val <= 0) { continue; }
+            if (parf === 'undefined' || val <= 0) { continue; }
 
             res += " - " + val + " " + parf + "\n";
             total += val;
