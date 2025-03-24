@@ -38,7 +38,12 @@ export default class App extends Component {
       }
       return "Stock total: " + total + " bacs";
     } else {
-      return "Stocks Pompon";
+      let total = 0;
+      for (const parf of Object.keys(this.state.values)) {
+        const res = parfums[parf] - this.state.values[parf]
+        total += (res < 0? 0: res);
+      }
+      return "Taille commande: " + total + " bacs";
     }
   }
 
