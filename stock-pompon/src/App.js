@@ -19,7 +19,7 @@ export default class App extends Component {
 
   componentDidMount() {
     const storedValues = localStorage.getItem('parfumValues');
-    if (storedValues) {
+    if (Object.keys(storedValues).length === Object.keys(parfums).length) {
       this.setState({ values: JSON.parse(storedValues) });
     } else {
       let values = {};
