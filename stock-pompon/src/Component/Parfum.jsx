@@ -26,6 +26,9 @@ export class Parfum extends Component {
                 return type + " " + type + "ModeSpecialMoins";
             }
         } else {
+            if (this.props.parfumValue[this.props.parfum] > parfums[this.parfum]) {
+                return type + " " + type + "ModeSpecialPlus";
+            }
             return type;
         }
     }
@@ -56,6 +59,10 @@ export class Parfum extends Component {
         }
     }
 
+    get_totalBacClass = () => {
+        return (this.props.modeEdit? "Cache": "TotalBacs");
+    }
+
     render() {
         return (
             <div className={this.getClassName("ParfumDiv")}>
@@ -64,7 +71,10 @@ export class Parfum extends Component {
 
                 <div className="ParfumTextDiv">
                     <div className="ParfumText">{this.props.parfum}</div>
-                    <div className="ParfumValue">{this.get_value()}</div>
+                    <div className="nombreGlace">
+                        <div className="ParfumValue">{this.get_value()}</div>
+                        <div className={this.get_totalBacClass()}>{"/" + parfums[this.props.parfum]}</div>
+                    </div>
                 </div>
 
                 <div className={this.getClassName("BoutonPlusMoins")} 

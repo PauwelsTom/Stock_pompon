@@ -29,3 +29,5 @@ export const totalStock = 96;
 
 export const iconeEngrenage = "https://cdn-icons-png.flaticon.com/512/595/595125.png"
 export const iconeEchange = "https://cdn-icons-png.flaticon.com/512/3580/3580097.png";
+export const iconeRaz = "https://cdn-icons-png.flaticon.com/512/54/54303.png";
+export const iconeCorbeille = "https://cdn-icons-png.flaticon.com/512/561/561125.png";

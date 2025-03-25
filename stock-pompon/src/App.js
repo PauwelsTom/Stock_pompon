@@ -2,7 +2,7 @@ import "./couleurs.css"
 import './App.css';
 import { Component } from 'react';
 import { Parfum } from './Component/Parfum';
-import { iconeEchange, iconeEngrenage, parfums } from './data';
+import { iconeCorbeille, iconeEchange, iconeEngrenage, iconeRaz, parfums, parfumsInit } from './data';
 import { ZoneTexte } from './Component/ZoneTexte';
 
 export default class App extends Component {
@@ -19,15 +19,16 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const storedValues = localStorage.getItem('parfumValues');
+    const storedValues = JSON.parse(localStorage.getItem('parfumValues'));
     if (Object.keys(storedValues).length === Object.keys(parfums).length) {
-      this.setState({ values: JSON.parse(storedValues) });
+      this.setState({ values: storedValues });
     } else {
       let values = {};
-      for (const parf of Object.keys(parfums)) {
+      for (const parf of Object.keys(parfumsInit)) {
         values[parf] = 0;
       }
       this.setState({ values: values });
+      localStorage.setItem("parfumValues", JSON.stringify(values));
     }
   }
 
@@ -44,7 +45,36 @@ export default class App extends Component {
         const res = parfums[parf] - this.state.values[parf]
         total += (res < 0? 0: res);
       }
-      return "Taille commande: " + total + " bacs";
+      return "Commande: " + total + " bacs";
+    }
+  }
+
+  get_place = () => {
+    let total = 0;
+    for (const parf of Object.keys(parfums)) {
+      if (this.state.values[parf] > parfums[parf]) {
+        total += (parfumsInit[parf] - this.state.values[parf]);
+      } else {
+        total += parfumsInit[parf] - parfums[parf];
+      }
+    }
+    return total;
+  }
+
+  get_placeRestante = (className=false) => {
+    const total = this.get_place();
+    if (className) {
+      if (total < 0) {
+        return "placeRouge";
+      } else if (total > 0) {
+        return "placeVert";
+      }
+    } else {
+      if (total < 0) {
+        return "Place manquante: " + -total + " bacs";
+      } else if (total > 0) {
+        return "Place restante: " + total + " bacs";
+      }
     }
   }
 
@@ -60,10 +90,6 @@ export default class App extends Component {
       const tempValues = this.state.values;
       if (add) {
         tempValues[parfum] += 1;
-        // DEPRECATED: Limite haute du stock
-        // if (tempValues[parfum] > parfums[parfum]) {
-        //   tempValues[parfum] = parfums[parfum];
-        // }
       } else {
         tempValues[parfum] -= 1;
         if (tempValues[parfum] < 0) {
@@ -76,12 +102,21 @@ export default class App extends Component {
   }
 
   resetValues = () => {
-    let values = {};
-    for (const parf of Object.keys(parfums)) {
-      values[parf] = 0;
+    if (this.state.modeEdit) {
+      for (const parf of Object.keys(parfums)) {
+        parfums[parf] = parfumsInit[parf];
+      }
+      localStorage.setItem("parfums", JSON.stringify(parfums));
+      this.forceUpdate();
+      return;
+    } else {
+      let values = {};
+      for (const parf of Object.keys(parfums)) {
+        values[parf] = 0;
+      }
+      this.setState({ values: values });
+      localStorage.setItem('parfumValues', JSON.stringify(values));
     }
-    this.setState({ values: values });
-    localStorage.setItem('parfumValues', JSON.stringify(values));
   }
 
   changeMode = () => {
@@ -102,8 +137,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>{this.get_title()}</h1>
+      <div className={"App " + (this.state.modeEdit ? "AppSpecial": "AppNormal")}>
+        <div className="titre">{this.get_title()}</div>
+        <div className={"place " + this.get_placeRestante(true)}>{this.get_placeRestante()}</div>
+        
         <div className="BoutonsHaut">
 
           <div className="ChangeMode" onClick={this.changeMode}>
@@ -111,7 +148,7 @@ export default class App extends Component {
           </div>
 
           <div className='ResetButton' onClick={this.resetValues}>
-            <img src="corbeille.png" alt="Corbeille" className='CorbeilleImage'/>
+            <img src={this.state.modeEdit ? iconeRaz : iconeCorbeille} alt="Corbeille" className='CorbeilleImage'/>
           </div>
 
           <div className='OrdreBouton' onClick={this.changeOrdre}>
@@ -123,7 +160,7 @@ export default class App extends Component {
           <Parfum key={parf} parfum={parf} parfumValue={this.state.values} changeParfum={this.addValue} modeEdit={this.state.modeEdit}/>
         ))}
 
-        <ZoneTexte values={this.state.values}/>
+        <ZoneTexte values={this.state.values} get_place={this.get_place}/>
       </div>
     );
   }

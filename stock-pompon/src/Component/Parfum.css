@@ -111,3 +111,18 @@
     font-size: 4vh;
     font-weight: bold;
 }
+
+.nombreGlace {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.TotalBacs {
+    margin-top: 2vh;
+}
+
+.Cache {
+    display: none;
+}

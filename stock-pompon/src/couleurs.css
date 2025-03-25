@@ -12,6 +12,8 @@
     --orange-clair: #f4a261;
     --orange: #e76f51;
 
+    --jaune-clair: #e6d8bf;
+
     --bleu-clair: #c1e2eb;
     --bleu: #4A919E;
 
@@ -48,5 +50,8 @@
 
     --ordre-button: var(--vert2);
     --ordre-button-bord: var(--vert-fonce);
+
+    --background-normal: white;
+    --background-special: var(--jaune-clair);
 
 }

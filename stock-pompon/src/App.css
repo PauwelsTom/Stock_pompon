@@ -6,6 +6,36 @@
   text-align: center;
 }
 
+.titre {
+  font-size: 4.5vh;
+  font-weight: 600;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.place {
+  font-size: 3vh;
+  font-weight: 600;
+  margin-bottom: 5vh;
+  height: 3vh;
+}
+
+.placeRouge {
+  color: red;
+}
+
+.placeVert {
+  color: green;
+}
+
+.AppNormal {
+  background-color: var(--background-normal);
+}
+
+.AppSpecial {
+  background-color: var(--background-special);
+}
+
 .ResetButton {
   background-color: var(--reset-button);
 
@@ -48,7 +78,7 @@
   align-items: center;
 
   height: 80%;
-  margin-left: 15%;
+  margin-left: 10%;
   margin-top: 10%;
 }
 

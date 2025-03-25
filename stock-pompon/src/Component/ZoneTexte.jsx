@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./ZoneTexte.css"
 import { parfums } from "../data";
 
-// values
+// values, get_place
 export class ZoneTexte extends Component {
     constructor(props) {
         super();
@@ -11,6 +11,11 @@ export class ZoneTexte extends Component {
     // Copie le contenu de la zone de texte dans le presse-papier
     copyToClipboard = () => {
         const textToCopy = this.valuesToString(this.props.values);
+        if (this.props.get_place() < 0) {
+            if (!window.confirm("Il y a plus de bacs que de place dans le congel, c'est normal ?")) {
+                return;
+            }
+        }
         navigator.clipboard.writeText(textToCopy).then(
           () => {
             alert("Copie dans le presse-papier effectuée");
