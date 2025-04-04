@@ -33,7 +33,7 @@ if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getI
 const temp = JSON.parse(localStorage.getItem("parfums"));
 
 for (const key in parfumsInit) {
-    if (temp[key] === NaN) {
+    if (isNaN(temp[key])) {
         localStorage.setItem("parfums", JSON.stringify(parfumsInit));
     }
 }
