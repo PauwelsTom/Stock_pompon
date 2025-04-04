@@ -38,7 +38,7 @@ export class ZoneTexte extends Component {
             res += " - " + val + " " + parf + "\n";
             total += val;
         }
-        res += "\n\nTotal: " + total + "\n\nMerci";
+        res += "\n\nTotal: " + total + " bacs\n\nMerci";
         res = "Salut Luc,\nVoici ma commande:\n\n" + res;
         return res;
     }

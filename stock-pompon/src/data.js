@@ -30,6 +30,14 @@ if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getI
     localStorage.setItem("parfums", JSON.stringify(parfumsInit));
 }
 
+const temp = JSON.parse(localStorage.getItem("parfums"));
+
+for (const key in temp) {
+    if (temp[key] === NaN) {
+        localStorage.setItem("parfums", JSON.stringify(parfumsInit));
+    }
+}
+
 export const parfums = JSON.parse(localStorage.getItem("parfums"));
 
 export const totalStock = 96;
