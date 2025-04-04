@@ -1,5 +1,5 @@
 export const parfumsInit = {
-    "Chocoloat": 10,
+    "Chocolat": 10,
     "Vanille": 16,
     "Fraise": 6,
     "Pistache": 6,
@@ -18,6 +18,13 @@ export const parfumsInit = {
     "Calvados": 2,
     "Coup de Coeur": 4,
 };
+
+export const ordreLuc = [
+    "Vanille", "Amarena", "Yaourt", "Rhum-raisin", "Coco", 
+    "Marron", "Calvados", "Caramel", "Nutella", "Pistache",
+    "Cafe", "Chocolat", "Citron", "Mangue", "Passion", 
+    "Fraise", "Cassis", "Coup de Coeur"
+]
 
 if (!localStorage.getItem("parfums") || Object.keys(JSON.parse(localStorage.getItem("parfums"))).length !== Object.keys(parfumsInit).length) {
     localStorage.setItem("parfums", JSON.stringify(parfumsInit));

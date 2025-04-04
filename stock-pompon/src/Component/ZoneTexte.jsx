@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./ZoneTexte.css"
-import { parfums } from "../data";
+import { ordreLuc, parfums } from "../data";
 
 // values, get_place
 export class ZoneTexte extends Component {
@@ -30,7 +30,7 @@ export class ZoneTexte extends Component {
     valuesToString = (values) => {
         let res = "";
         let total = 0;
-        for (const parf of Object.keys(values).sort((a, b) => a.localeCompare(b))) {
+        for (const parf of ordreLuc) {
             const val = parfums[parf] - values[parf];
 
             if (parf === 'undefined' || val <= 0) { continue; }
