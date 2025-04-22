@@ -16,6 +16,7 @@
 
     --bleu-clair: #c1e2eb;
     --bleu: #4A919E;
+    --bleu-fonce: #2c555c;
 
     --rose-clair: #ebd7d6;
     --rose: #FE94B4;
@@ -54,4 +55,9 @@
     --background-normal: white;
     --background-special: var(--jaune-clair);
 
+    --fond-special-zero: var(--bleu);
+    --bord-special-zero: var(--bleu-fonce);
+
+    --fond-special-clignote: var(--rouge);
+    --bord-special-clignote: var(--rouge-fonce);
 }

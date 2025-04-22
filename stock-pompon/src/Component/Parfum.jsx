@@ -2,35 +2,49 @@ import { parfums, parfumsInit } from "../data";
 import "./Parfum.css"
 import { Component } from "react";
 
-// parfum, parfumValue, changeParfum, modeEdit
 export class Parfum extends Component {
     
     constructor(props) {
         super();
         this.state = {
             disabled: parfums[props.parfum] === 0,
+            clignote: false,
         }
         this.parfum = props.parfum;
     }
 
     getClassName = (type) => {
+        let baseClass = type;
         if (this.state.disabled) {
-            return type + " " + type + "Disabled";
+            baseClass += " " + type + "Disabled";
         }
         if (this.props.modeEdit) {
             if (parfums[this.parfum] === parfumsInit[this.parfum]) {
-                return type + " " + type + "ModeSpecialEgal";
+                baseClass += " " + type + "ModeSpecialEgal";
             } else if (parfums[this.parfum] >= parfumsInit[this.parfum]) {
-                return type + " " + type + "ModeSpecialPlus";
+                baseClass += " " + type + "ModeSpecialPlus";
             } else {
-                return type + " " + type + "ModeSpecialMoins";
+                baseClass += " " + type + "ModeSpecialMoins";
             }
         } else {
             if (this.props.parfumValue[this.props.parfum] > parfums[this.parfum]) {
-                return type + " " + type + "ModeSpecialPlus";
+                baseClass += " " + type + "ModeSpecialPlus";
+            } else if (this.props.parfumValue[this.props.parfum] === 0) {
+                baseClass += " " + type + "Nothing";
             }
-            return type;
         }
+
+        // Ajout du clignotement
+        if (this.state.clignote) {
+            if (type === "BoutonPlusMoins") {
+                baseClass += " BoutonPlusMoinsClignote";
+            }
+            if (type === "ParfumDiv") {
+                baseClass += " ParfumDivClignote";
+            }
+        }
+
+        return baseClass;
     }
 
     get_value = () => {
@@ -47,7 +61,6 @@ export class Parfum extends Component {
         }
     }
     
-
     handleClick = (add) => {
         if (this.state.disabled) {
             if (this.props.modeEdit && add) {
@@ -56,6 +69,11 @@ export class Parfum extends Component {
         } else {
             this.props.changeParfum(this.props.parfum, add);
             this.forceUpdate();
+
+            // Ajoute le clignotement pendant 300ms
+            this.setState({ clignote: true }, () => {
+                setTimeout(() => this.setState({ clignote: false }), 100);
+            });
         }
     }
 

@@ -97,6 +97,29 @@
     border: 5px solid var(--bord-special-disabled);
 }
 
+/* 0 bacs */
+
+.BoutonPlusMoinsNothing {
+    background-color: var(--fond-special-zero);
+    color: var(--bord-special-zero);
+    border: 4px solid var(--bord-special-zero);
+}
+
+.ParfumDivNothing {
+    background-color: var(--fond-special-zero);
+    border: 5px solid var(--bord-special-zero);
+}
+
+.BoutonPlusMoinsClignote {
+    background-color: var(--fond-special-clignote);
+    color: var(--bord-special-clignote);
+    border: 4px solid var(--bord-special-clignote);
+}
+
+.ParfumDivClignote {
+    background-color: var(--fond-special-clignote);
+    border: 5px solid var(--bord-special-clignote);
+}
 
 .ParfumTextDiv {
     display: flex;
